@@ -2,14 +2,13 @@ const grid = document.getElementById('grid');
 const size = document.getElementById('size');
 const eraser = document.getElementById('eraser');
 const color = document.getElementById('color');
+const rainbow = document.getElementById('rainbow');
 const gridBorder = document.getElementById('grid-borders');
 const clear = document.getElementById('clear');
 
 // grid
 function makeGrid(number) {
   number = number || 16;
-  let cellWidth = 40 / number + 'rem';
-  let cellHeight = 40 / number + 'rem';
   grid.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
   grid.style.gridTemplateRows = `repeat(${number}, 1fr)`;
   for (let i = 0; i < number * number; i++) {
@@ -18,8 +17,6 @@ function makeGrid(number) {
     cell.classList.add('border');
     cell.classList.add('box');
     cell.style.backgroundColor = 'white';
-    cell.style.width = cellWidth;
-    cell.style.height = cellHeight;
     cell.addEventListener('mouseover', function (e) {
       e.target !== grid ? (e.target.style.backgroundColor = 'black') : null;
     });
@@ -28,12 +25,24 @@ function makeGrid(number) {
 }
 makeGrid();
 
-// drawing on hover
+// color on hover
 color.addEventListener('input', function () {
   let newColor = document.getElementById('input-color').value;
   console.log(newColor);
   grid.addEventListener('mouseover', function (e) {
     e.target !== grid ? (e.target.style.backgroundColor = newColor) : null;
+  });
+});
+
+//rainbow functionality
+const randomColor = () => {
+  return '#' + (((1 << 24) * Math.random()) | 0).toString(16);
+};
+
+rainbow.addEventListener('click', function () {
+  grid.addEventListener('mouseover', function (e) {
+    e.target !== grid ? (e.target.style.backgroundColor = randomColor()) : null;
+    console.log(e.target.style.backgroundColor);
   });
 });
 
@@ -45,8 +54,8 @@ eraser.addEventListener('click', function () {
 });
 
 // grid borders
-const allBoxes = document.querySelectorAll('.box');
 gridBorder.addEventListener('click', function () {
+  const allBoxes = document.querySelectorAll('.box');
   allBoxes.forEach((box) => {
     box.classList.toggle('no-border');
     box.classList.toggle('border');
@@ -55,17 +64,22 @@ gridBorder.addEventListener('click', function () {
 
 // clear button
 clear.addEventListener('click', function () {
-  allBoxes.forEach((box) => {
+  const elem = document.querySelectorAll('.box');
+  elem.forEach((box) => {
     box.style.backgroundColor = 'white';
   });
 });
 
 // size button
-// size.addEventListener('click', function () {
-//   let number = prompt(`Enter grid size less or equal to 100`);
-//   if (number !== Number.isInteger()) {
-//     return;
-//   } else if (number > 100) {
-//     number = prompt(`Enter grid size greater or equal to 100`);
-//   }
-// });
+size.addEventListener('click', function () {
+  const elem = document.querySelectorAll('.box');
+  elem.forEach((box) => {
+    box.style.backgroundColor = 'white';
+  });
+  let input = prompt(`Enter canvas size (below 100)`);
+  if (isNaN(input) || input > 100 || input <= 0 || input == '') {
+    window.alert(`Please enter a number between 0 and 100`);
+    return;
+  } else makeGrid(input);
+  console.log(input);
+});

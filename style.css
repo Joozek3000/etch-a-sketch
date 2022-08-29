@@ -6,7 +6,7 @@
 
 body {
   height: 100vh;
-  background-color: aquamarine;
+  background-color: #219ebc;
 }
 
 #grid {
@@ -30,7 +30,7 @@ body {
 #container {
   display: flex;
   height: 60%;
-  width: 1259px;
+  width: 1280px;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 20px;
