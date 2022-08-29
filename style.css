@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   height: 100vh;
   background-color: aquamarine;
@@ -7,27 +13,28 @@ body {
   display: grid;
   justify-content: center;
   border: 1px solid #ccc;
-}
-
-.box {
-  /* removed the initial outline &/or border property here so it can be added and removed (toggled) using JS el.classList.toggle */
-  padding: 1em;
+  width: 40rem;
+  height: 40rem;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
 #title {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  height: 230px;
+  height: 180px;
 }
 
 #container {
   display: flex;
   height: 60%;
-  width: 1204px;
+  width: 1259px;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 20px;
+  padding-top: 20px;
 }
 
 #menu {
@@ -35,8 +42,6 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-
-/* added the following classes to be toggled using JS depending on state of gridBorders button */
 
 .border {
   outline: 1px solid black;
@@ -52,4 +57,13 @@ body {
 
 .white-bg {
   background: white;
+}
+
+button {
+  height: 40px;
+  width: 90px;
+}
+
+#input-color {
+  width: 75px;
 }
