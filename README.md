@@ -1,11 +1,13 @@
 # etch-a-sketch
 
+<p>
     Introduction:
     The Etch-a-Sketch app is a simple JavaScript application that allows users to create drawings by hovering their mouse over a grid.
-
+</p>
+<p>
     Elements:
     The app consists of the following elements:
-
+</p>
 <ul>
         <li>Grid: The grid is the canvas where users can draw. It's a div element with the id 'grid'.</li>
         <li>Size: The size button allows users to change the size of the grid. It's a div element with the id 'size'.</li>
