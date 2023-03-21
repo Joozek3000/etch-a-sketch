@@ -1,5 +1,7 @@
 # etch-a-sketch
 
+<a href="https://joozek3000.github.io/etch-a-sketch/">Live Demo</a>
+
 <p>
     <h1>Introduction:</h1>
     <p>The Etch-a-Sketch app is a simple JavaScript application that allows users to create drawings by hovering their mouse over a grid.</p>
